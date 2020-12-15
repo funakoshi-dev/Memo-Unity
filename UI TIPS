@@ -1,0 +1,6 @@
+//Change gameObject(ex:panel) to show
+public void ActivatePanel(string nextPanel)
+{
+    firstPanel.SetActive(nextPanel.Equals(firstPanel.name));
+    secondPanel.SetActive(nextPanel.Equals(secondPanel.name));
+}
