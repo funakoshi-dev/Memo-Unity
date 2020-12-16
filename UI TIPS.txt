@@ -1,3 +1,5 @@
+//////////GameObject//////////
+
 //Change GameObject to show
 public void ActivatePanel(string nextPanel)
 {
@@ -10,3 +12,7 @@ public void SwitchActiveState()
 {
     testObject.SetActive(!testObject.activeSelf);
 }
+
+//Move GameObject Front or Back
+GetComponent<RectTransform>().SetAsLastSibling(); //Front
+GetComponent<RectTransform>().SetAsFirstSibling(); //Back
