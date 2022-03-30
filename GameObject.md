@@ -1,18 +1,23 @@
-//////////GameObject//////////
 
-//Change GameObject to show
+### Change GameObject to show
+```
 public void ActivatePanel(string nextPanel)
 {
     firstPanel.SetActive(nextPanel.Equals(firstPanel.name));
     secondPanel.SetActive(nextPanel.Equals(secondPanel.name));
 }
+```
 
-//Switch GameObject On/Off
+### Switch GameObject On/Off
+```
 public void SwitchActiveState()
 {
     testObject.SetActive(!testObject.activeSelf);
 }
+```
 
-//Move GameObject Front or Back
+### Move GameObject Front or Back
+```
 GetComponent<RectTransform>().SetAsLastSibling(); //Front
 GetComponent<RectTransform>().SetAsFirstSibling(); //Back
+```
