@@ -6,27 +6,27 @@
         rb.MovePosition(new Vector2(target.x,target.y));
 #else
         void Update()
-    {
-        Touch touch = Input.GetTouch(0);
-
-        if (touch.phase == TouchPhase.Began)
         {
-            previousPos = Camera.main.ScreenToWorldPoint(touch.position);
-        }
-        if (touch.phase == TouchPhase.Moved)
-        {
-            currentPos = Camera.main.ScreenToWorldPoint(touch.position);
-            diff_x = (currentPos.x - previousPos.x);
-            diff_y = (currentPos.y - previousPos.y);
+            Touch touch = Input.GetTouch(0);
 
-            rb.MovePosition(rb.position + new Vector2(diff_x,diff_y));
+            if (touch.phase == TouchPhase.Began)
+            {
+                previousPos = Camera.main.ScreenToWorldPoint(touch.position);
+            }
+            if (touch.phase == TouchPhase.Moved)
+            {
+                currentPos = Camera.main.ScreenToWorldPoint(touch.position);
+                diff_x = (currentPos.x - previousPos.x);
+                diff_y = (currentPos.y - previousPos.y);
 
-            previousPos = currentPos;
+                rb.MovePosition(rb.position + new Vector2(diff_x,diff_y));
+
+                previousPos = currentPos;
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
         }
-        else
-        {
-            rb.velocity = Vector3.zero;
-        }
-    }
 #endif
 ```
