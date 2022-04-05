@@ -5,19 +5,28 @@
         target = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x, mouse.y, 10));
         rb.MovePosition(new Vector2(target.x,target.y));
 #else
-        if (0 < Input.touchCount)
-        {
-            Touch touchPos = Input.GetTouch(0);
+        void Update()
+    {
+        Touch touch = Input.GetTouch(0);
 
-            if (TouchPhase.Moved == touchPos.phase)
-            {
-                Vector2 moveDist = (touchPos.deltaPosition / touchPos.deltaTime) * Time.deltaTime;
-                rb.velocity = new Vector3(moveDist.x, moveDist.y, 0);
-            }
+        if (touch.phase == TouchPhase.Began)
+        {
+            previousPos = Camera.main.ScreenToWorldPoint(touch.position);
+        }
+        if (touch.phase == TouchPhase.Moved)
+        {
+            currentPos = Camera.main.ScreenToWorldPoint(touch.position);
+            diff_x = (currentPos.x - previousPos.x);
+            diff_y = (currentPos.y - previousPos.y);
+
+            rb.MovePosition(rb.position + new Vector2(diff_x,diff_y));
+
+            previousPos = currentPos;
         }
         else
         {
             rb.velocity = Vector3.zero;
         }
+    }
 #endif
 ```
