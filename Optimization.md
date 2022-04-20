@@ -8,3 +8,7 @@
 ## Playe Settings
 ### Other Settings
 - Static Batching [x] (then Static [x] of GameObjects)
+
+## Assets
+### Materials
+- Enable GPU Instancing [x]
